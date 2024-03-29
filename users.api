@@ -7,12 +7,12 @@ info (
 )
 
 type RoleItem {
-  Id        string   `json:"id"`
-  Name      string   `json:"name"`
-  Slug      string   `json:"slug"`
-  IsActive  bool     `json:"is_active"`
-  CreatedAt string   `json:"created_at"`
-  UpdatedAt string   `json:"updated_at"`
+	Id        string `json:"id"`
+	Name      string `json:"name"`
+	Slug      string `json:"slug"`
+	IsActive  bool   `json:"is_active"`
+	CreatedAt string `json:"created_at"`
+	UpdatedAt string `json:"updated_at"`
 }
 
 type UserItem {
@@ -50,13 +50,13 @@ service User {
 	post /users accepts (UserItem) returns (UserItem)
 
 	@handler get
-	get /users/{id} returns (UserItem)
+	get /users/:id returns (UserItem)
 
 	@handler update
-	put /users/{id} accepts (UserItem) returns (UserItem)
+	put /users/:id accepts (UserItem) returns (UserItem)
 
 	@handler delete
-	delete /users/{id} returns (UserItem)
+	delete /users/:id returns (UserItem)
 
 	@handler listRoles
 	get /roles returns ([]RoleItem)

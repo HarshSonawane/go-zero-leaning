@@ -24,6 +24,31 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/users",
 				Handler: v1.ListHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/usersaccepts",
+				Handler: v1.CreateHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/users/:id",
+				Handler: v1.GetHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPut,
+				Path:    "/users/:idaccepts",
+				Handler: v1.UpdateHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodDelete,
+				Path:    "/users/:id",
+				Handler: v1.DeleteHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/roles",
+				Handler: v1.ListRolesHandler(serverCtx),
+			},
 		},
 		rest.WithPrefix("/v1"),
 		rest.WithTimeout(3000*time.Millisecond),
