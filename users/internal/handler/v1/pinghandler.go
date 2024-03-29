@@ -3,9 +3,9 @@ package v1
 import (
 	"net/http"
 
-	"auth/internal/logic/v1"
-	"auth/internal/svc"
 	"github.com/zeromicro/go-zero/rest/httpx"
+	"users/internal/logic/v1"
+	"users/internal/svc"
 )
 
 func PingHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {

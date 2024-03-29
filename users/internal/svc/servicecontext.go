@@ -1,7 +1,7 @@
 package svc
 
 import (
-	"auth/internal/config"
+	"users/internal/config"
 )
 
 type ServiceContext struct {

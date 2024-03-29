@@ -3,8 +3,8 @@ package v1
 import (
 	"context"
 
-	"auth/internal/svc"
-	"auth/internal/types"
+	"users/internal/svc"
+	"users/internal/types"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )
@@ -23,17 +23,21 @@ func NewListLogic(ctx context.Context, svcCtx *svc.ServiceContext) *ListLogic {
 	}
 }
 
-func (l *ListLogic) List() (resp []types.ListItem, err error) {
-	// generate random data
-	resp = []types.ListItem{
+func (l *ListLogic) List() (resp []types.UserListItem, err error) {
+	resp = []types.UserListItem{
 		{
 			Id:   "1",
-			Name: "name1",
+			FirstName: "John",
+			LastName: "Doe",
+			Email: "john@ddsio.com",
 		},
 		{
 			Id:   "2",
-			Name: "name2",
+			FirstName: "Jane",
+			LastName: "Doe",
+			Email: "jane@ddsio.com",
 		},
 	}
+
 	return resp, nil
 }

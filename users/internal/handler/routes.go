@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"time"
 
-	v1 "auth/internal/handler/v1"
-	"auth/internal/svc"
+	v1 "users/internal/handler/v1"
+	"users/internal/svc"
 
 	"github.com/zeromicro/go-zero/rest"
 )
@@ -20,29 +20,9 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Handler: v1.PingHandler(serverCtx),
 			},
 			{
-				Method:  http.MethodPost,
-				Path:    "/update",
-				Handler: v1.UpdateHandler(serverCtx),
-			},
-			{
 				Method:  http.MethodGet,
-				Path:    "/list",
+				Path:    "/users",
 				Handler: v1.ListHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodPost,
-				Path:    "/login",
-				Handler: v1.LoginHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodPost,
-				Path:    "/form/example",
-				Handler: v1.FormExampleHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/path/example/:id",
-				Handler: v1.PathExampleHandler(serverCtx),
 			},
 		},
 		rest.WithPrefix("/v1"),

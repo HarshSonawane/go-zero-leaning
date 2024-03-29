@@ -1,4 +1,4 @@
-module auth
+module users
 
 go 1.21.1
 
