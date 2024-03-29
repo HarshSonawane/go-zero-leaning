@@ -1,0 +1,65 @@
+syntax = "v1"
+
+info (
+	title:   "api"
+	author:  "harsh"
+	version: "v1"
+)
+
+type UpdateReq {
+	Arg1 string `json:"arg1"`
+}
+
+// Id and Name
+type ListItem {
+	Id   string `json:"id"`
+	Name string `json:"name"`
+}
+
+type LoginReq {
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
+
+type LoginResp {
+	Name string `json:"name"`
+}
+
+type FormExampleReq {
+	Name string `form:"name"`
+}
+
+type PathExampleReq {
+	ID string `path:"id"`
+}
+
+type PathExampleResp {
+	Name string `json:"name"`
+}
+
+@server (
+	prefix:     /v1
+	group:      v1
+	timeout:    3s
+	maxBytes:   1048576
+)
+
+service User {
+	@handler ping
+	get /ping
+
+	@handler update
+	post /update (UpdateReq)
+
+	@handler list
+	get /list returns ([]ListItem)
+
+	@handler login
+	post /login (LoginReq) returns (LoginResp)
+
+	@handler formExample
+	post /form/example (FormExampleReq)
+
+	@handler pathExample
+	get /path/example/:id (PathExampleReq) returns (PathExampleResp)
+}
